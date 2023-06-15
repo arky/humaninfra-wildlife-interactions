@@ -1,43 +1,46 @@
-# {Name of App}
+# Human Infrastructure and Wildlife Interactions Detection
 
-*Give your app a short and informative title. Please adhere to our convention of Title Case without hyphens (e.g. `My New App`)*
-
-MoveApps
-
-Github repository: *github.com/yourAccount/Name-of-App* *(the link to the repository where the code of the app can be found must be provided)*
-
-## SDK
-
-As an **App developer** you should have a look into the [developer README document](developer_README.md). 
-*Please delete this section for your final app documentation*
-
+Github repository: *github.com/arky/humaninfra-wildlife-interactions* 
 ## Description
-*Enter here the short description of the App that might also be used when filling out the description at submission of the App to Moveapps. This text is directly presented to Users that look through the list of Apps when compiling Workflows.*
+
+This early stage MoveApp written in python visualizes wildlife interactions with human infrastructure using Open Street Map (OSM) data.  
+
+Current implementation extracts Road networks (highway,motorway, trunk, primary, secondary and tertiary roads) and plots any stops detected from animal trajectories.
+
+Biologists and conservation projects could easily get an idea of wildlife interactions with man made infrastructure such as roadways at a glance.
 
 ## Documentation
-*Enter here a detailed description of your App. What is it intended to be used for. Which steps of analyses are performed and how. Please be explicit about any detail that is important for use and understanding of the App and its outcomes.*
+
+The code is based on [MovingPandas](https://movingpandas.readthedocs.io/en/main/) [stop detector](https://movingpandas.readthedocs.io/en/main/trajectorystopdetector.html)
+
+The OpenStreetMap geo spatial data is retrieved using [OSMnx](https://osmnx.readthedocs.io/en/stable/) python package.
+
+* Limitations * : The tool is envisioned to be an interactive dashboard built with MoveApps Python GUI. The current version generates only static plot. 
+
+At the moment, (MovingPandas)[https://movingpandas.readthedocs.io/en/main/trajectory.html#movingpandas.Trajectory.intersection] seems to only support shapely objects only. In future, we need to find a suitable ways to find intersections of OSMNx graphs.
 
 ### Input data
-*Indicate which type of input data the App requires. Currently only R objects of class `MoveStack` can be used. This will be extend in the future.*
 
-*Example*: MovingPandas TrajectoryCollection in Movebank format
+ MovingPandas TrajectoryCollection in Movebank format. Requires that you [link-r-python](https://github.com/movestore/link-r-python) MoveApp to convert R data into MovingPandas TrajectoryCollection.
 
 ### Output data
-*Indicate which type of output data the App produces to be passed on to subsequent apps. Currently only R objects of class `MoveStack` can be used. This will be extend in the future. In case the App does not pass on any data (e.g. a shiny visualization app), it can be also indicated here that no output is produced to be used in subsequent apps.*
 
-*Example:* MovingPandas TrajectoryCollection in Movebank format
+App does not pass on any data to other apps.
 
 ### Artefacts
-*If the App creates artefacts (e.g. csv, pdf, jpeg, shapefiles, etc), please list them here and describe each.*
 
-*Example:* `rest_overview.csv`: csv-file with Table of all rest site properties
+`StopPoints-OSM.png`: PNG image file with road networks and stop points visualized.
 
 ### Settings 
-*Please list and define all settings/parameters that the App requires to be set, if necessary including their unit.*
 
-*Example:* `Radius of resting site` (radius): Defined radius the animal has to stay in for a given duration of time for it to be considered resting site. Unit: `metres`.
+In future, you can fine tune stop detector by passing following parameters.
 
-### Null or error handling
-*Please indicate for each setting/parameter as well as the input data which behaviour the App is supposed to show in case of errors or NULL values/input. Please also add notes of possible errors that can happen if settings are improperly set and any other important information that you find the user should be aware of.*
+`min_duration (int)`: Defines the minimum time period of the stop in seconds. The default is 120 seconds.
 
-*Example:* **Setting `radius`:** If no radius AND no duration are given, the input data set is returned with a warning. If no radius is given (NULL), but a duration is defined then a default radius of 1000m = 1km is set. 
+
+`max_diameter (int)`: Defines the diameter of the area that animal has to stay in minimum duration of time for it to be considered a stop point. The default is 100 meters. 
+
+
+`buffer (float)`: Add padding around (bounding box)[https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_bbox]. The default is `0.005`.
+
+`custom_filter (str)`: A custom ways filter to passed to (OSMNx graph)[https://osmnx.readthedocs.io/en/stable/osmnx.html#osmnx.graph.graph_from_bbox]. The default is `["highway"~"motorway|trunk|primary|secondary|tertiary"]`.

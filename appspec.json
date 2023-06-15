@@ -7,20 +7,20 @@
   },
   "language": "eng",
   "keywords": [
-    "example",
-    "template"
+    "Data Visualization",
+    "Stop Detection"
   ],
   "people": [
     {
-      "firstName": "Charles",
+      "firstName": "Arky",
       "middleInitials": null,
-      "lastName": "Darwin",
-      "email": "creator@example.com",
+      "lastName": null,
+      "email": "hitmanarky@gmail.com",
       "roles": [
         "author",
         "creator"
       ],
-      "orcid": null,
+      "orcid": 0009-0003-5460-3624,
       "affiliation": null,
       "affiliationRor": null
     }
@@ -39,7 +39,7 @@
     }
   ],
   "documentation": {
-    "url": "https://github.com/yourAccount/my-app/README.md"
+    "url": "https://github.com/arky/humaninfra-wildlife-interactions/README.md"
   }
 }
 

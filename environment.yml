@@ -8,3 +8,9 @@ dependencies:
   - movingpandas
   - pluggy
   - python-dotenv
+  - matplotlib
+  - shapely
+  - networkx
+  - osmnx
+  - cython
+  - geoviews-core
