@@ -14,13 +14,13 @@
     {
       "firstName": "Arky",
       "middleInitials": null,
-      "lastName": null,
+      "lastName": "AR",
       "email": "hitmanarky@gmail.com",
       "roles": [
         "author",
         "creator"
       ],
-      "orcid": 0009-0003-5460-3624,
+      "orcid": "0009-0003-5460-3624",
       "affiliation": null,
       "affiliationRor": null
     }
