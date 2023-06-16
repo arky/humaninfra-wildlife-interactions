@@ -25,7 +25,7 @@ At the moment, [MovingPandas](https://movingpandas.readthedocs.io/en/main/trajec
 
 ### Output data
 
-App does not pass on any data to other apps.
+MovingPandas TrajectoryCollection in Movebank format.
 
 ### Artefacts
 
