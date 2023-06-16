@@ -68,7 +68,7 @@ class App(object):
         res = stop_points.plot(ax=ax, color='red', zorder=3, alpha=0.2)
         fig = res.get_figure()
         logging.info("Saving plot to image.")
-        fig.savefig('StopPoints-OSM.png')
+        fig.savefig(self.moveapps_io.create_artifacts_file('StopPoints-OSM.png'))
        
 
         return data
