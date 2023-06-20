@@ -17,9 +17,9 @@ from geopandas import GeoDataFrame, read_file
 from shapely.geometry import Point, LineString, Polygon
 from datetime import datetime, timedelta
 
-# Enable OSMNX cache and logs  
-ox.settings.use_cache=True
-#ox.settings.log_console=True
+# OSMNX cache and log settings  
+ox.settings.use_cache = False
+ox.settings.log_console = False
 
 
 class App(object):
