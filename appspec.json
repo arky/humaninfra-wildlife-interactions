@@ -1,14 +1,57 @@
 {
-  "settings": [],
+  "version": "1.2",
+  "settings": [
+    {
+      "id": "min_duration",
+      "name": "Minimum Stop Duration (seconds)",
+      "description": "Minimum time in seconds that an animal must remain within the stop area to be counted as a stop. Increase to filter out brief pauses; decrease to capture shorter stops.",
+      "defaultValue": 180,
+      "type": "INTEGER"
+    },
+    {
+      "id": "max_diameter",
+      "name": "Maximum Stop Diameter (metres)",
+      "description": "Diameter in metres of the area within which the animal must remain for the stop to be detected. Smaller values require the animal to stay in a tighter area.",
+      "defaultValue": 100,
+      "type": "INTEGER"
+    },
+    {
+      "id": "buffer",
+      "name": "Bounding Box Buffer (degrees)",
+      "description": "Padding added around the bounding box of detected stop points when fetching the OSM road network. Increase to include more surrounding road context.",
+      "defaultValue": 0.005,
+      "type": "DOUBLE"
+    },
+    {
+      "id": "road_network",
+      "name": "Road Network Coverage",
+      "description": "Controls which OSM road types are fetched. Minimal is fastest; All roads is slowest but most complete. Ignored if Custom OSM Tag Filter is set.",
+      "defaultValue": "major",
+      "type": "RADIOBUTTONS",
+      "options": [
+        {"value": "minimal", "label": "Minimal — motorway + trunk only (fastest)"},
+        {"value": "major",   "label": "Major roads — motorway to tertiary (default)"},
+        {"value": "all",     "label": "All roads (slowest, most complete)"}
+      ]
+    },
+    {
+      "id": "custom_filter",
+      "name": "Custom OSM Tag Filter",
+      "description": "Advanced: OSMnx Overpass filter string to override Road Network Coverage. Leave empty to use the selection above. Example: [\"highway\"~\"motorway|primary|cycleway\"]",
+      "defaultValue": null,
+      "type": "STRING"
+    }
+  ],
   "providedAppFiles": [],
-  "createsArtifacts": true,
   "license": {
     "key": "MIT"
   },
   "language": "eng",
   "keywords": [
     "Data Visualization",
-    "Stop Detection"
+    "Stop Detection",
+    "Hotspot Analysis",
+    "Wildlife Infrastructure Interaction"
   ],
   "people": [
     {
@@ -36,4 +79,3 @@
     "url": "https://github.com/arky/humaninfra-wildlife-interactions/blob/main/README.md"
   }
 }
-

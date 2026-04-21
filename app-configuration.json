@@ -1,3 +1,6 @@
 {
-  "MoveApps": "Python SDK"
+  "min_duration": 180,
+  "max_diameter": 100,
+  "buffer": 0.005,
+  "road_network": "all"
 }
