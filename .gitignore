@@ -147,6 +147,11 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+### Project-specific ###
+.env
+resources/samples/*.pickle
+resources/samples/*.csv
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
