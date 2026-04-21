@@ -29,15 +29,15 @@
       "defaultValue": "major",
       "type": "RADIOBUTTONS",
       "options": [
-        {"value": "minimal", "label": "Minimal — motorway + trunk only (fastest)"},
-        {"value": "major",   "label": "Major roads — motorway to tertiary (default)"},
-        {"value": "all",     "label": "All roads (slowest, most complete)"}
+        {"value": "minimal", "displayText": "Minimal — motorway + trunk only (fastest)"},
+        {"value": "major",   "displayText": "Major roads — motorway to tertiary (default)"},
+        {"value": "all",     "displayText": "All roads (slowest, most complete)"}
       ]
     },
     {
       "id": "custom_filter",
       "name": "Custom OSM Tag Filter",
-      "description": "Advanced: OSMnx Overpass filter string to override Road Network Coverage. Leave empty to use the selection above. Example: [\"highway\"~\"motorway|primary|cycleway\"]",
+      "description": "Advanced: Overpass filter string to override Road Network Coverage. Leave empty to use the selection above. Example: [\"highway\"~\"motorway|primary|cycleway\"]",
       "defaultValue": null,
       "type": "STRING"
     }
@@ -74,8 +74,5 @@
       "note": "Graser, A. (2019). MovingPandas: Efficient Structures for Movement Data in Python. GI_Forum ‒ Journal of Geographic Information Science 2019, 1-2019, 54-68. ",
       "url": "https://doi.org/10.1553/giscience2019_01_s54"
     }
-  ],
-  "documentation": {
-    "url": "https://github.com/arky/humaninfra-wildlife-interactions/blob/main/README.md"
-  }
+  ]
 }
