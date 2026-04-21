@@ -34,7 +34,7 @@ class MoveAppsExecutor:
 
     def __load_environment(self):
         self.env = Environment(
-            source_file=os.environ.get('SOURCE_FILE', 'resources/samples/input1.pickle'),
+            source_file=os.environ.get('SOURCE_FILE'),
             output_file=os.environ.get('OUTPUT_FILE', 'resources/output/output.pickle'),
             error_file=os.environ.get('ERROR_FILE', 'resources/output/error.txt'),
             app_configuration=self.__load_config()
@@ -60,7 +60,18 @@ class MoveAppsExecutor:
             config = os.environ.get('CONFIGURATION', '{}')
             parsed = json.loads(config)
         if os.environ.get("PRINT_CONFIGURATION", "no") == "yes":
-            logging.info(f'app will be started with configuration: {parsed}')
+            # Create a copy of parsed for logging
+            logging_config = parsed.copy()
+            # Get and process MASK_SETTING_IDS
+            mask_setting_ids = os.environ.get('MASK_SETTING_IDS', '').strip()
+            if mask_setting_ids:
+                # Split by comma and trim each value
+                mask_keys = [key.strip() for key in mask_setting_ids.split(',')]
+                # Replace values with "***masked***" for specified keys in the logging copy
+                for key in mask_keys:
+                    if key in logging_config:
+                        logging_config[key] = "***masked***"
+            logging.info(f'app will be started with configuration: {logging_config}')
         return parsed
 
     def __store_output(self, data):
